@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    rails g interage:request:install
+
+    This will create:
+        /app/requests/application_request.rb

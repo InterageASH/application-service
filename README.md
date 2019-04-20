@@ -1,11 +1,11 @@
-# Interage::Query
+# Interage::Request
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'interage-query', '~> 0.1'
+gem 'interage-request', '~> 0.1'
 ```
 
 And then execute:
@@ -17,24 +17,24 @@ bundle install
 Or install it yourself as:
 
 ```bash
-gem install interage-query
+gem install interage-request
 ```
 
 ## Usage
 
-You can use a Rails generator to create `ApplicationQuery`:
+You can use a Rails generator to create `ApplicationRequest`:
 
 ```bash
-rails g interage:query:install
+rails g interage:request:install
 ```
 
-And you can use a Rails generator to create query classes:
+And you can use a Rails generator to create request classes:
 
 
 ```bash
-rails g interage:query:create UsersByEmail User
+rails g interage:request:create CustomersByDocument Customer
 ```
 
 ## Contributing
 
-Bug reports and merge requests are welcome on GitLab at https://gitlab.com/[USERNAME]/interage-query.
+Bug reports and merge requests are welcome on GitLab at https://gitlab.com/[USERNAME]/interage-request.

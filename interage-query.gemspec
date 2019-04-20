@@ -2,25 +2,27 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'interage/query/version'
+require 'interage/request/version'
 
-CODE_URL = 'https://gitlab.com/interage/patterns/query'
 Gem::Specification.new do |spec|
-  spec.name          = 'interage-query'
-  spec.version       = Interage::Query::VERSION
+  spec.name          = 'interage-request'
+  spec.version       = Interage::Request::VERSION
   spec.authors       = ['Walmir Neto']
   spec.email         = ['owalmirneto@gmail.com']
 
-  spec.summary       = CODE_URL
-  spec.description   = CODE_URL
-  spec.homepage      = CODE_URL
+  spec.summary       = 'https://gitlab.com/interage/patterns/request'
+  spec.description   = 'https://gitlab.com/interage/patterns/request'
+  spec.homepage      = 'https://gitlab.com/interage/patterns/request'
 
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = CODE_URL
+    spec.metadata['allowed_push_host'] =
+      'https://gitlab.com/interage/patterns/request'
 
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = CODE_URL
-    spec.metadata['changelog_uri'] = CODE_URL
+    spec.metadata['source_code_uri'] =
+      'https://gitlab.com/interage/patterns/request'
+    spec.metadata['changelog_uri'] =
+      'https://gitlab.com/interage/patterns/request'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'

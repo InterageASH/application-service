@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    rails g interage:request:create ClientsByDocument Client
+
+    This will create:
+        /app/requests/clients_by_document_request.rb
