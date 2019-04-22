@@ -8,12 +8,12 @@ Gem::Specification.new do |spec|
   spec.name          = 'interage-request'
   spec.version       = Interage::Request::VERSION
   spec.authors       = ['Walmir Neto']
-  spec.email         = ['walmir@interage.in']
+  spec.email         = ['owalmirneto@gmail.com']
 
   spec.summary       = 'Application Request for Interage'
   spec.description   = 'Use Net::HTTP to make requests'
   spec.homepage      = 'https://gitlab.com/interage/patterns/request'
-  spec.license       = 'MIT'
+  spec.licenses      = ['MIT']
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
@@ -28,9 +28,10 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject do |file|
-      file.match(%r{^(test|spec|features)/})
+      file.match(%r{^(test|spec|features)/}) || file.split('.').last == 'gem'
     end
   end
+
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
