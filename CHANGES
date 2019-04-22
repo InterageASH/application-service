@@ -1,0 +1,7 @@
+Version 0.1.0
+ - Renomea e reimplmenta gem para application request
+ - Adiciona comando dos geradores na documentação
+ - Implementa geradores de classes query
+ - Implementar classe application query
+ - Cria gem application query
+
