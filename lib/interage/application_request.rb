@@ -13,7 +13,7 @@ module Interage
     def find(id)
       response = get(path: member_path(id))
 
-      klass.new(response[key_name])
+      klass.new(response[key_name]) if response.present?
     end
 
     def create(body)
