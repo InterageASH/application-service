@@ -63,14 +63,29 @@ module Interage
       start_request(Net::HTTP::Delete, path)
     end
 
-    def start_request(klass, path, body = {})
+    def start_request(klass, path, body = {}, use_ssl=false, verify_ssl=true)
+      return start_https_request(klass, path, body, verify_ssl) if use_ssl
+      return start_http_request(klass, path, body)
+    end
+
+    def start_http_request(klass, path, body)
       uri = URI(base_url(path: path))
-      request = klass.new(uri)
-      request.body = body.to_json
-      request.content_type = 'application/json'
-      headers.map { |key, value| request[key] = value }
+      request = http_request(klass, path, body)
 
       Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(request)
+      end
+    end
+
+    def start_https_request(klass, path, body, verify_ssl)
+      uri = URI(base_url(path: path))
+      request = http_request(klass, path, body, uri)
+
+      http = Net::HTTP.new uri.hostname, 443
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE unless verify_ssl
+
+      http.start do |http|
         http.request(request)
       end
     end
@@ -81,6 +96,15 @@ module Interage
 
     def plural_key_name
       key_name.to_s.pluralize.to_sym
+    end
+
+    def http_request(klass, path, body, uri)
+      request = klass.new(uri)
+      request.body = body.to_json
+      request.content_type = 'application/json'
+      headers.map { |key, value| request[key] = value }
+
+      request
     end
   end
 end
