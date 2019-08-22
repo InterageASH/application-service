@@ -20,7 +20,7 @@ module Interage
       post(base_path, body)
     end
 
-    def update(id)
+    def update(id, body)
       put(member_path(id), body)
     end
 
