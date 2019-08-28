@@ -70,7 +70,7 @@ module Interage
 
     def start_http_request(klass, path, body)
       uri = URI(base_url(path: path))
-      request = http_request(klass, path, body)
+      request = http_request(klass, path, body, uri)
 
       Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
