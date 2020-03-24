@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'interage/request/version'
+require 'interage/service/version'
 require 'active_support/core_ext/module'
 
 module Interage
-  module Request
+  module Service
     class Error < StandardError
     end
   end
 
-  autoload :ApplicationRequest, 'interage/application_request'
+  autoload :ApplicationService, 'interage/application_service'
 end

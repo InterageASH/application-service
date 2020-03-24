@@ -2,17 +2,17 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'interage/request/version'
+require 'interage/service/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'interage-request'
-  spec.version       = Interage::Request::VERSION
+  spec.name          = 'interage-service'
+  spec.version       = Interage::Service::VERSION
   spec.authors       = ['Walmir Neto']
   spec.email         = ['owalmirneto@gmail.com']
 
-  spec.summary       = 'Application Request for Interage'
-  spec.description   = 'Use Net::HTTP to make requests'
-  spec.homepage      = 'https://gitlab.com/interage/patterns/request'
+  spec.summary       = 'Application Service for Interage'
+  spec.description   = 'Use Net::HTTP to make services'
+  spec.homepage      = 'https://gitlab.com/interage/patterns/service'
   spec.licenses      = ['MIT']
 
   if spec.respond_to?(:metadata)
