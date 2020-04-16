@@ -1,40 +1,74 @@
-# Interage::Service
+# ServiceIt
+[![Gem Version](https://badge.fury.io/rb/service_it.svg)](https://badge.fury.io/rb/service_it) [![Build Status](https://travis-ci.org/iago-silva/service_it.svg?branch=master)](https://travis-ci.org/iago-silva/service_it) [![Code Climate](https://codeclimate.com/github/iago-silva/service_it.png)](https://codeclimate.com/github/iago-silva/service_it) [![Test Coverage](https://api.codeclimate.com/v1/badges/fcc8375ebe8fa5412381/test_coverage)](https://codeclimate.com/github/iago-silva/service_it/test_coverage)
+
+Its benefit is to facilitate the creation of Service Objects, providing you the basic and enough to have a complete one and letting you free to use on your own way.
+
+- [ServiceIt](#serviceit)
+  - [Installation](#installation)
+  - [With Bundler](#with-bundler)
+  - [Rails Generator](#rails-generator)
+  - [Usage](#usage)
+  - [Example](#example)
 
 ## Installation
 
-Add this line to your application's Gemfile:
+    $ gem install service_it
 
-```ruby
-gem 'interage-service', '~> 0.1'
-```
+## With Bundler
+
+Add this line to your `Gemfile`:
+
+    gem 'service_it', '~> 1.2.0'
 
 And then execute:
 
-```bash
-bundle install
+    $ bundle
+
+## Rails Generator
+
+You can use Rails generator to create a `Service`
+
+    $ rails g service NAME
+
+This will create:
+
 ```
-
-Or install it yourself as:
-
-```bash
-gem install interage-service
+├── app
+    ├── services
+        └── name.rb
 ```
 
 ## Usage
 
-You can use a Rails generator to create `ApplicationService`:
-
-```bash
-rails g interage:service:install
+```ruby
+class Foo < ServiceIt::Base
+  def perform
+    # put your logic here
+    # you can use params that became variables
+  end
+end
 ```
 
-And you can use a Rails generator to create service classes:
+Call your service from anywhere (controllers, models, migrations, ...)
 
-
-```bash
-rails g interage:service:create CustomersByDocument Customer
+```ruby
+Foo.call(foo: foo, bar: bar)
 ```
 
-## Contributing
+## Example
 
-Bug reports and merge services are welcome on GitLab at https://gitlab.com/[USERNAME]/interage-service.
+Simple example to release a _POST_
+
+```ruby
+ReleasePost.call(post: @post)
+```
+
+```ruby
+# app/services/release_post.rb
+class ReleasePost < ServiceIt::Base
+  def perform
+    post.prepare_to_release
+    post.update(released_at: Date.current)
+  end
+end
+```
